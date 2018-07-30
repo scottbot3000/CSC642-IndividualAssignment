@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<%- include ../partials/stylesheets.ejs %>
+		<style type="text/css">
+			label {
+				min-width: 100px;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- Form container -->
+		<div class="border border-primary rounded container" style="margin: 10px">
+			<form>
+				<legend>CSC 642 Summer 2018 Individual Assignment Scott Penn</legend>
+				<legend>Registration Form</legend>
+				<hr class="style1">
+				<!-- First and Last Names -->
+				<div class="form-group row">
+					<label for="firstName" class="col-form-label col-1 offset-1">First Name: </label>
+					<div class="col-3">
+						<input type="text" class="form-control" id="firstName" placeholder="First Name">
+					</div>
+					<label for="lastName" class="col-form-label col-1">Last Name: </label>
+					<div class="col-3">
+						<input type="text" class="form-control" id="lastName" placeholder="Last Name">
+					</div>
+				</div>
+				<!-- Address -->
+				<div class="form-group row">
+					<label for="address" class="col-form-label col-1 offset-1">Address: </label>
+					<div class="col-3">
+						<input type="text" class="form-control" id="address" placeholder="Address">
+					</div>
+					<hr/>
+				</div>
+				<hr class="style1">
+				<!-- Education Level -->
+				<div class="form-group row">
+					<label for="education" class="col-form-label col-1 offset-1">Education Level: </label>
+					<div class="col-3">
+						<select class="custom-select" id="education">
+							<option selected>Choose Education Level</option>
+							<option value="1">High School</option>
+							<option value="2">College</option>
+							<option value="3">Graduate Studies</option>
+							<option value="4">Ph.D</option>
+							<option value="5">Student of Life</option>
+						</select>
+					</div>
+				</div>
+				<!-- Income -->
+				<div class="form-group row">
+					<label for="income" class="col-form-label col-1 offset-1">Income: </label>
+					<div class="col-3">
+						<select class="custom-select" id="income">
+							<option selected>Choose Yearly Income</option>
+							<option value="1">Less than $50,000</option>
+							<option value="2">Between $50,000-$100,000</option>
+							<option value="3">More than $100,000</option>
+						</select>
+					</div>
+				</div>
+				<hr class="style1">
+				<!-- Phone and Email -->
+				<div class="form-group row">
+					<label for="phone" class="col-form-label col-1 offset-1">Phone Number: </label>
+					<div class="col-3">
+						<input type="tel" class="form-control" id="phone" placeholder="(###) ###-####">
+					</div>
+					<label for="email" class="col-form-label col-1">Email Address: </label>
+					<div class="col-3">
+						<input type="email" class="form-control" id="email" placeholder="email@address">
+					</div>
+				</div>
+				<hr class="style1">
+				<!-- Password -->
+				<div class="form-group row">
+					<label for="password" class="col-form-label col-1 offset-1">Enter Password: </label>
+					<div class="col-3">
+						<input type="password" class="form-control" id="password">
+					</div>
+				</div>
+				<div class="form-group row">
+					<label for="password-repeat" class="col-form-label col-1 offset-1">Confirm Password: </label>
+					<div class="col-3">
+						<input type="password" class="form-control" id="password-repeat">
+					</div>
+				</div>
+				<hr class="style1">
+				<!-- Terms and Conditions -->
+				<div class="form-group row">
+					<div class="col-5 offset-1">
+						<label for="terms" class="col-form-label">I agree to the <a href="#">Terms and Conditions</a> </label>
+						<input type="checkbox" class="col-form-control" id="terms">
+					</div>
+				</div>
+				<!-- Captcha -->
+				<div class="form-group row">
+					<label for="captcha" class="col-form-label col-2 offset-1">Please verify that you are not a robot.</label>
+					<%- data %>
+					<div class="col-2">
+						<input type="text" class="form-control" id="captcha">
+					</div>
+				</div>
+			</form>
+		</div>
+		<%- include ../partials/scripts.ejs %>
+	</body>
+</html>

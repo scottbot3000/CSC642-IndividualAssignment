@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<%- include ../partials/stylesheets.ejs %>
+		<style type="text/css">
+			label {
+				min-width: 100px;
+			}
+		</style>
+		<script>
+			$(document).ready(function(){
+				$('[data-toggle="tooltip"]').tooltip();
+			});
+		</script>
+	</head>
+	<body>
+		<!-- Form container -->
+		<div class="border border-primary rounded container" style="margin: 10px">
+			<form>
+				<legend>Results Verification Page Scott Penn</legend>
+				<hr class="style1">
+				<!-- First and Last Names -->
+				<div class="form-group row">
+					<label for="firstName" class="col-form-label col-1 offset-1">First Name: </label>
+					<div class="col-3">
+						<p class="col-form-label">First Name</p>
+					</div>
+					<label for="lastName" class="col-form-label col-1">Last Name: </label>
+					<div class="col-3">
+						<p class="col-form-label">First Name</p>
+					</div>
+				</div>
+				<!-- Address -->
+				<div class="form-group row">
+					<label for="address" class="col-form-label col-1 offset-1">Address: </label>
+					<div class="col-3">
+						<p class="col-form-label">First Name</p>
+					</div>
+					<hr/>
+				</div>
+				<hr class="style1">
+				<!-- Education Level -->
+				<div class="form-group row">
+					<label for="education" class="col-form-label col-1 offset-1">Education Level: </label>
+					<div class="col-3">
+						<p class="col-form-label">First Name</p>
+					</div>
+				</div>
+				<!-- Income -->
+				<div class="form-group row">
+					<label for="income" class="col-form-label col-1 offset-1">Income: </label>
+					<div class="col-3">
+						<p class="col-form-label">First Name</p>
+					</div>
+				</div>
+				<hr class="style1">
+				<!-- Phone and Email -->
+				<div class="form-group row">
+					<label for="phone" class="col-form-label col-1 offset-1">Phone Number: </label>
+					<div class="col-3">
+						<p class="col-form-label">First Name</p>
+					</div>
+					<label for="email" class="col-form-label col-1">Email Address: </label>
+					<div class="col-3">
+						<p class="col-form-label">First Name</p>
+					</div>
+				</div>
+				<hr class="style1">
+				<!-- Password -->
+				<div class="form-group row">
+					<label for="password" class="col-form-label col-1 offset-1">Password: </label>
+					<div class="col-3">
+						<p class="col-form-label" data-toggle="tooltip" title="Hunter2">Hover for Password</p>
+					</div>
+				</div>
+				<hr class="style1">
+			</form>
+		</div>
+		<%- include ../partials/scripts.ejs %>
+	</body>
+</html>
