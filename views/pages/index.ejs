@@ -22,7 +22,7 @@
 						<input name="firstName" type="text" class="form-control <%= firstNameValid %>" id="firstName" placeholder="First Name" value="<%= firstName %>" required>
 						<div class="valid-feedback"></div>
 						<div class="invalid-feedback">
-							First Name is a required field.
+							<%= firstNameMessage %>
 						</div>
 					</div>
 					<label for="lastName" class="col-form-label col-1">Last Name: </label>
@@ -30,7 +30,7 @@
 						<input name="lastName" type="text" class="form-control <%= lastNameValid %>" id="lastName" placeholder="Last Name" value="<%= lastName %>" required>
 						<div class="valid-feedback"></div>
 						<div class="invalid-feedback">
-							Last Name is a required field.
+							<%= lastNameMessage %>
 						</div>
 					</div>
 				</div>

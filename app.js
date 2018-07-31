@@ -13,16 +13,47 @@ function validate(req, res, next) {
 
 	var valid = "is-valid"
 	var invalid = "is-invalid"
-	req.firstNameValid = (req.body.firstName == "") ? invalid : valid;
-	req.lastNameValid = (req.body.lastName == "") ? invalid : valid;
+	//Validate First Name
+	if (req.body.firstName == "") {
+		req.firstNameValid = invalid;
+		req.firstNameMessage = "First Name is a required field.";
+	} else if (req.body.firstName.length >= 40) {
+		req.firstNameValid = invalid;
+		req.firstNameMessage = "First Name must be no more than 40 characters long.";
+	} else if (!req.body.firstName.match(/^[a-zA-Z]+$/)) {
+		req.firstNameValid = invalid;
+		req.firstNameMessage = "First Name must contain only English alphabet characters.";
+	} else {
+		req.firstNameValid = valid;
+	}
+	//Validate Last Name
+	if (req.body.lastName == "") {
+		req.lastNameValid = invalid;
+		req.lastNameMessage = "Last Name is a required field.";
+	} else if (req.body.lastName.length >= 40) {
+		req.lastNameValid = invalid;
+		req.lastNameMessage = "Last Name must be no more than 40 characters long.";
+	} else if (!req.body.lastName.match(/^[a-zA-Z]+$/)) {
+		req.lastNameValid = invalid;
+		req.lastNameMessage = "Last Name must contain only English alphabet characters.";
+	} else {
+		req.lastNameValid = valid;
+	}
+	//Validate Address
 	req.addressValid = (req.body.address == "") ? invalid : valid;
+	//Validate education and income
 	req.educationValid = valid;
 	req.incomeValid = valid;
+	//Validate Phone number
 	req.phoneValid = (req.body.phone == "") ? invalid : valid;
+	//Validate email
 	req.emailValid = (req.body.email == "") ? invalid : valid;
+	//Validate password
 	req.passwordValid = (req.body.password == "") ? invalid : valid;
 	req.passwordRepeatValid = (req.body.passwordRepeat == "") ? invalid : valid;
+	//Validate Terms and Conditions
 	req.termsValid = (req.body.terms) ? valid : invalid;
+	//Validate Captcha
 	req.captchaValid = valid;
 
 	req.body.isValid =  req.firstNameValid      == valid &&
@@ -62,10 +93,15 @@ express()
 		console.log(captcha.text)
 		res.render('pages/index', {
 			data: captcha.data,
+			//First Name
 			firstName: "",
 			firstNameValid: "",
+			firstNameMessage: "",
+			//Last Name
 			lastName: "",
 			lastNameValid: "",
+			lastNameMessage: "",
+			//Address
 			address: "",
 			addressValid: "",
 			education: "",
@@ -119,10 +155,15 @@ express()
 
 			res.render('pages/index', {
 				data: captcha.data,
+				//First Name
 				firstName: req.body.firstName,
 				firstNameValid: req.firstNameValid,
+				firstNameMessage: req.firstNameMessage,
+				//Last Name
 				lastName: req.body.lastName,
 				lastNameValid: req.lastNameValid,
+				lastNameMessage: req.lastNameMessage,
+				//Address
 				address: req.body.address,
 				addressValid: req.addressValid,
 				education: req.body.education,
