@@ -15,26 +15,29 @@
 	</head>
 	<body>
 		<!-- Form container -->
-		<div class="border border-primary rounded container" style="margin: 10px">
-			<form>
+		<div class="border border-primary rounded container-fluid" style="margin: 10px">
+			<form novalidate>
 				<legend>Results Verification Page Scott Penn</legend>
 				<hr class="style1">
 				<!-- First and Last Names -->
 				<div class="form-group row">
 					<label for="firstName" class="col-form-label col-1 offset-1">First Name: </label>
 					<div class="col-3">
-						<p class="col-form-label">First Name</p>
+						<p class="col-form-label"><%= firstName %></p>
 					</div>
+					<div class="valid-feedback">
+        				Looks good!
+      				</div>
 					<label for="lastName" class="col-form-label col-1">Last Name: </label>
 					<div class="col-3">
-						<p class="col-form-label">First Name</p>
+						<p class="col-form-label"><%= lastName %></p>
 					</div>
 				</div>
 				<!-- Address -->
 				<div class="form-group row">
 					<label for="address" class="col-form-label col-1 offset-1">Address: </label>
 					<div class="col-3">
-						<p class="col-form-label">First Name</p>
+						<p class="col-form-label"><%= address %></p>
 					</div>
 					<hr/>
 				</div>
@@ -43,14 +46,14 @@
 				<div class="form-group row">
 					<label for="education" class="col-form-label col-1 offset-1">Education Level: </label>
 					<div class="col-3">
-						<p class="col-form-label">First Name</p>
+						<p class="col-form-label"><%= education %></p>
 					</div>
 				</div>
 				<!-- Income -->
 				<div class="form-group row">
 					<label for="income" class="col-form-label col-1 offset-1">Income: </label>
 					<div class="col-3">
-						<p class="col-form-label">First Name</p>
+						<p class="col-form-label"><%= income %></p>
 					</div>
 				</div>
 				<hr class="style1">
@@ -58,11 +61,11 @@
 				<div class="form-group row">
 					<label for="phone" class="col-form-label col-1 offset-1">Phone Number: </label>
 					<div class="col-3">
-						<p class="col-form-label">First Name</p>
+						<p class="col-form-label"><%= phone %></p>
 					</div>
 					<label for="email" class="col-form-label col-1">Email Address: </label>
 					<div class="col-3">
-						<p class="col-form-label">First Name</p>
+						<p class="col-form-label"><%= email %></p>
 					</div>
 				</div>
 				<hr class="style1">
@@ -70,7 +73,7 @@
 				<div class="form-group row">
 					<label for="password" class="col-form-label col-1 offset-1">Password: </label>
 					<div class="col-3">
-						<p class="col-form-label" data-toggle="tooltip" title="Hunter2">Hover for Password</p>
+						<p class="col-form-label" data-toggle="tooltip" title="<%= password %>">Hover for Password</p>
 					</div>
 				</div>
 				<hr class="style1">

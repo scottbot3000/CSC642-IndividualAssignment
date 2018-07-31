@@ -10,8 +10,8 @@
 	</head>
 	<body>
 		<!-- Form container -->
-		<div class="border border-primary rounded container" style="margin: 10px">
-			<form>
+		<div class="border border-primary rounded container-fluid" style="margin: 10px">
+			<form method="post" novalidate>
 				<legend>CSC 642 Summer 2018 Individual Assignment Scott Penn</legend>
 				<legend>Registration Form</legend>
 				<hr class="style1">
@@ -19,18 +19,30 @@
 				<div class="form-group row">
 					<label for="firstName" class="col-form-label col-1 offset-1">First Name: </label>
 					<div class="col-3">
-						<input type="text" class="form-control" id="firstName" placeholder="First Name">
+						<input name="firstName" type="text" class="form-control <%= firstNameValid %>" id="firstName" placeholder="First Name" value="<%= firstName %>" required>
+						<div class="valid-feedback"></div>
+						<div class="invalid-feedback">
+							First Name is a required field.
+						</div>
 					</div>
 					<label for="lastName" class="col-form-label col-1">Last Name: </label>
 					<div class="col-3">
-						<input type="text" class="form-control" id="lastName" placeholder="Last Name">
+						<input name="lastName" type="text" class="form-control <%= lastNameValid %>" id="lastName" placeholder="Last Name" value="<%= lastName %>" required>
+						<div class="valid-feedback"></div>
+						<div class="invalid-feedback">
+							Last Name is a required field.
+						</div>
 					</div>
 				</div>
 				<!-- Address -->
 				<div class="form-group row">
 					<label for="address" class="col-form-label col-1 offset-1">Address: </label>
 					<div class="col-3">
-						<input type="text" class="form-control" id="address" placeholder="Address">
+						<input name="address" type="text" class="form-control <%= addressValid %>" id="address" placeholder="Address" value="<%= address %>" required>
+						<div class="valid-feedback"></div>
+						<div class="invalid-feedback">
+							Address is a required field.
+						</div>
 					</div>
 					<hr/>
 				</div>
@@ -39,26 +51,28 @@
 				<div class="form-group row">
 					<label for="education" class="col-form-label col-1 offset-1">Education Level: </label>
 					<div class="col-3">
-						<select class="custom-select" id="education">
-							<option selected>Choose Education Level</option>
-							<option value="1">High School</option>
-							<option value="2">College</option>
-							<option value="3">Graduate Studies</option>
-							<option value="4">Ph.D</option>
+						<select name="education" class="custom-select <%= educationValid %>" id="education">
+							<option value="" selected>Choose Education Level</option>
+							<option value="High School">High School</option>
+							<option value="College">College</option>
+							<option value="Graduate Studies">Graduate Studies</option>
+							<option value="Ph.D">Ph.D</option>
 							<option value="5">Student of Life</option>
 						</select>
+						<div class="valid-feedback"></div>
 					</div>
 				</div>
 				<!-- Income -->
 				<div class="form-group row">
 					<label for="income" class="col-form-label col-1 offset-1">Income: </label>
 					<div class="col-3">
-						<select class="custom-select" id="income">
-							<option selected>Choose Yearly Income</option>
-							<option value="1">Less than $50,000</option>
-							<option value="2">Between $50,000-$100,000</option>
-							<option value="3">More than $100,000</option>
+						<select name="income" class="custom-select <%= incomeValid %>" id="income">
+							<option value="" selected>Choose Yearly Income</option>
+							<option value="Less than $50,000">Less than $50,000</option>
+							<option value="Between $50,000-$100,000">Between $50,000-$100,000</option>
+							<option value="More than $100,000">More than $100,000</option>
 						</select>
+						<div class="valid-feedback"></div>
 					</div>
 				</div>
 				<hr class="style1">
@@ -66,11 +80,19 @@
 				<div class="form-group row">
 					<label for="phone" class="col-form-label col-1 offset-1">Phone Number: </label>
 					<div class="col-3">
-						<input type="tel" class="form-control" id="phone" placeholder="(###) ###-####">
+						<input name="phone" type="tel" class="form-control <%= phoneValid %>" id="phone" placeholder="(###) ###-####" value="<%= phone %>" required>
+						<div class="valid-feedback"></div>
+						<div class="invalid-feedback">
+							Please enter a valid phone number.
+						</div>
 					</div>
 					<label for="email" class="col-form-label col-1">Email Address: </label>
 					<div class="col-3">
-						<input type="email" class="form-control" id="email" placeholder="email@address">
+						<input name="email" type="email" class="form-control <%= emailValid %>" id="email" placeholder="email@address" value="<%= email %>">
+						<div class="valid-feedback"></div>
+						<div class="invalid-feedback">
+							Please enter a valid email.
+						</div>
 					</div>
 				</div>
 				<hr class="style1">
@@ -78,13 +100,19 @@
 				<div class="form-group row">
 					<label for="password" class="col-form-label col-1 offset-1">Enter Password: </label>
 					<div class="col-3">
-						<input type="password" class="form-control" id="password">
+						<input name="password" type="password" class="form-control <%= passwordValid %>" id="password" required>
+						<div class="invalid-feedback">
+							Please enter a valid password.
+						</div>
 					</div>
 				</div>
 				<div class="form-group row">
 					<label for="password-repeat" class="col-form-label col-1 offset-1">Confirm Password: </label>
 					<div class="col-3">
-						<input type="password" class="form-control" id="password-repeat">
+						<input name="password-repeat" type="password" class="form-control <%= passwordValid %>" id="password-repeat" required>
+						<div class="invalid-feedback">
+							Passwords did not match.
+						</div>
 					</div>
 				</div>
 				<hr class="style1">
@@ -92,7 +120,10 @@
 				<div class="form-group row">
 					<div class="col-5 offset-1">
 						<label for="terms" class="col-form-label">I agree to the <a href="#">Terms and Conditions</a> </label>
-						<input type="checkbox" class="col-form-control" id="terms">
+						<input name="terms" type="checkbox" class="col-form-control <%= termsValid %>" id="terms" <% if (termsValid === "is-valid") { %> checked <% } %> required>
+						<div class="invalid-feedback">
+							You must accept the Terms and Conditions.
+						</div>
 					</div>
 				</div>
 				<!-- Captcha -->
@@ -100,9 +131,17 @@
 					<label for="captcha" class="col-form-label col-2 offset-1">Please verify that you are not a robot.</label>
 					<%- data %>
 					<div class="col-2">
-						<input type="text" class="form-control" id="captcha">
+						<input name="captcha" type="text" class="form-control <%= captchaValid %>" id="captcha" required>
+						<div class="invalid-feedback">
+							Incorrect input. Please try again.
+						</div>
 					</div>
 				</div>
+				<hr class="style1">
+				<input type="submit" name="submit" value="submit"style="display: none" />
+				<button type="submit" class="btn btn-danger offset-1" name="submit" value="cancel">Cancel</button>
+				<button type="submit" class="btn btn-success offset-1" name="submit" value="submit">Submit Form</button>
+				<br><br>
 			</form>
 		</div>
 		<%- include ../partials/scripts.ejs %>
