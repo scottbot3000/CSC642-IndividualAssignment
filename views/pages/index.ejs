@@ -15,9 +15,11 @@
 				<legend>CSC 642 Summer 2018 Individual Assignment Scott Penn</legend>
 				<legend>Registration Form</legend>
 				<hr class="style1">
+				<div class="offset-1">Fields marked with * indicate required fields.</div>
+				<br>
 				<!-- First and Last Names -->
 				<div class="form-group row">
-					<label for="firstName" class="col-form-label col-1 offset-1">First Name: </label>
+					<label for="firstName" class="col-form-label col-1 offset-1">*First Name: </label>
 					<div class="col-3">
 						<input name="firstName" type="text" class="form-control <%= firstNameValid %>" id="firstName" placeholder="First Name" value="<%= firstName %>" required>
 						<div class="valid-feedback"></div>
@@ -25,7 +27,7 @@
 							<%= firstNameMessage %>
 						</div>
 					</div>
-					<label for="lastName" class="col-form-label col-1">Last Name: </label>
+					<label for="lastName" class="col-form-label col-1">*Last Name: </label>
 					<div class="col-3">
 						<input name="lastName" type="text" class="form-control <%= lastNameValid %>" id="lastName" placeholder="Last Name" value="<%= lastName %>" required>
 						<div class="valid-feedback"></div>
@@ -36,12 +38,12 @@
 				</div>
 				<!-- Address -->
 				<div class="form-group row">
-					<label for="address" class="col-form-label col-1 offset-1">Address: </label>
+					<label for="address" class="col-form-label col-1 offset-1">*Address: </label>
 					<div class="col-3">
 						<input name="address" type="text" class="form-control <%= addressValid %>" id="address" placeholder="Address" value="<%= address %>" required>
 						<div class="valid-feedback"></div>
 						<div class="invalid-feedback">
-							Address is a required field.
+							<%= addressMessage %>
 						</div>
 					</div>
 					<hr/>
@@ -53,11 +55,10 @@
 					<div class="col-3">
 						<select name="education" class="custom-select <%= educationValid %>" id="education">
 							<option value="" selected>Choose Education Level</option>
-							<option value="High School">High School</option>
-							<option value="College">College</option>
-							<option value="Graduate Studies">Graduate Studies</option>
-							<option value="Ph.D">Ph.D</option>
-							<option value="5">Student of Life</option>
+							<option value="High School" <% if (education == "High School") { %> selected <% } %>>High School</option>
+							<option value="College" <% if (education == "College") { %> selected <% } %>>College</option>
+							<option value="Graduate Studies" <% if (education == "Graduate Studies") { %> selected <% } %>>Graduate Studies</option>
+							<option value="Ph.D" <% if (education == "Ph.D") { %> selected <% } %>>Ph.D</option>
 						</select>
 						<div class="valid-feedback"></div>
 					</div>
@@ -68,9 +69,9 @@
 					<div class="col-3">
 						<select name="income" class="custom-select <%= incomeValid %>" id="income">
 							<option value="" selected>Choose Yearly Income</option>
-							<option value="Less than $50,000">Less than $50,000</option>
-							<option value="Between $50,000-$100,000">Between $50,000-$100,000</option>
-							<option value="More than $100,000">More than $100,000</option>
+							<option value="Less than $50,000" <% if (income == "Less than $50,000") { %> selected <% } %>>Less than $50,000</option>
+							<option value="Between $50,000-$100,000" <% if (income == "Between $50,000-$100,000") { %> selected <% } %>>Between $50,000-$100,000</option>
+							<option value="More than $100,000" <% if (income == "More than $100,000") { %> selected <% } %>>More than $100,000</option>
 						</select>
 						<div class="valid-feedback"></div>
 					</div>
@@ -78,12 +79,12 @@
 				<hr class="style1">
 				<!-- Phone and Email -->
 				<div class="form-group row">
-					<label for="phone" class="col-form-label col-1 offset-1">Phone Number: </label>
+					<label for="phone" class="col-form-label col-1 offset-1">*Phone Number: </label>
 					<div class="col-3">
-						<input name="phone" type="tel" class="form-control <%= phoneValid %>" id="phone" placeholder="(###) ###-####" value="<%= phone %>" required>
+						<input name="phone" type="tel" class="form-control <%= phoneValid %>" id="phone" placeholder="#######" value="<%= phone %>" required>
 						<div class="valid-feedback"></div>
 						<div class="invalid-feedback">
-							Please enter a valid phone number.
+							<%= phoneMessage %>
 						</div>
 					</div>
 					<label for="email" class="col-form-label col-1">Email Address: </label>
@@ -91,27 +92,27 @@
 						<input name="email" type="email" class="form-control <%= emailValid %>" id="email" placeholder="email@address" value="<%= email %>">
 						<div class="valid-feedback"></div>
 						<div class="invalid-feedback">
-							Please enter a valid email.
+							<%= emailMessage %>
 						</div>
 					</div>
 				</div>
 				<hr class="style1">
 				<!-- Password -->
 				<div class="form-group row">
-					<label for="password" class="col-form-label col-1 offset-1">Enter Password: </label>
+					<label for="password" class="col-form-label col-1 offset-1">*Enter Password: </label>
 					<div class="col-3">
 						<input name="password" type="password" class="form-control <%= passwordValid %>" id="password" required>
 						<div class="invalid-feedback">
-							Please enter a valid password.
+							<%= passwordMessage %>
 						</div>
 					</div>
 				</div>
 				<div class="form-group row">
-					<label for="password-repeat" class="col-form-label col-1 offset-1">Confirm Password: </label>
+					<label for="password-repeat" class="col-form-label col-1 offset-1">*Confirm Password: </label>
 					<div class="col-3">
-						<input name="password-repeat" type="password" class="form-control <%= passwordValid %>" id="password-repeat" required>
+						<input name="passwordRepeat" type="password" class="form-control <%= passwordValid %>" id="password-repeat" required>
 						<div class="invalid-feedback">
-							Passwords did not match.
+							<%= passwordRepeatMessage %>
 						</div>
 					</div>
 				</div>
@@ -119,17 +120,19 @@
 				<!-- Terms and Conditions -->
 				<div class="form-group row">
 					<div class="col-5 offset-1">
-						<label for="terms" class="col-form-label">I agree to the <a href="#">Terms and Conditions</a> </label>
-						<input name="terms" type="checkbox" class="col-form-control <%= termsValid %>" id="terms" <% if (termsValid === "is-valid") { %> checked <% } %> required>
-						<div class="invalid-feedback">
+						<label for="terms" class="col-form-label">*I agree to the <a href="#">Terms and Conditions</a> </label>
+						<input name="terms" type="checkbox" class="col-form-control <%= termsValid %>" id="terms" <% if (termsValid == "is-valid") { %> checked <% } %> required>
+						<% if (termsValid == "is-invalid") { %>
+						<div style="color: #dc3545; font-size: small;">
 							You must accept the Terms and Conditions.
 						</div>
+						<% } %>
 					</div>
 				</div>
 				<!-- Captcha -->
 				<div class="form-group row">
-					<label for="captcha" class="col-form-label col-2 offset-1">Please verify that you are not a robot.</label>
-					<%- data %>
+					<label for="captcha" class="col-form-label col-2 offset-1">*Please verify that you are not a robot.</label>
+					<%- captcha %>
 					<div class="col-2">
 						<input name="captcha" type="text" class="form-control <%= captchaValid %>" id="captcha" required>
 						<div class="invalid-feedback">

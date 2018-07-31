@@ -25,9 +25,6 @@
 					<div class="col-3">
 						<p class="col-form-label"><%= firstName %></p>
 					</div>
-					<div class="valid-feedback">
-        				Looks good!
-      				</div>
 					<label for="lastName" class="col-form-label col-1">Last Name: </label>
 					<div class="col-3">
 						<p class="col-form-label"><%= lastName %></p>
@@ -41,6 +38,29 @@
 					</div>
 					<hr/>
 				</div>
+				<div id="map" class="offset-1" style="border: solid; height: 400px; width: 400px">
+				</div>
+				<script>
+					function initMap() {
+						var myLatLng = {lat: <%- map.latitude %>, lng: <%- map.longitude %>};
+						// Create a map object and specify the DOM element
+						// for display.
+						console.log(<%- map.latitude %>, <%- map.longitude %>)
+						var map = new google.maps.Map(document.getElementById('map'), {
+							center: myLatLng,
+							zoom: 15
+						});
+						console.log(map)
+						// Create a marker and set its position.
+						var marker = new google.maps.Marker({
+							map: map,
+							position: myLatLng,
+							title: 'Your Address'
+						});
+					}
+				</script>
+				<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJFb4ebK3wNtSWpt83Ha4HUOWaft55GUY&callback=initMap"
+				async defer></script>
 				<hr class="style1">
 				<!-- Education Level -->
 				<div class="form-group row">
