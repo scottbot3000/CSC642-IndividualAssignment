@@ -53,6 +53,9 @@ function validate(req, res, next) {
 	} else if (req.body.address.length > 40) {
 		req.addressValid = invalid;
 		req.addressMessage = "Address must be no more than 40 characters.";
+	} else if (!req.body.address.match(/^[a-zA-Z0-9\s,]+$/)) {
+		req.addressValid = invalid;
+		req.addressMessage = "Address must contain only alphanumeric characters, commas, and spaces.";
 	} else {
 		req.addressValid = valid;
 	}
@@ -87,7 +90,6 @@ function validate(req, res, next) {
 		req.emailMessage = "Email must have a valid format of email@domain.extension"
 	}
 	//Validate password
-	console.log(req.body.password, req.body.passwordRepeat)
 	if (req.body.password == "") {
 		req.passwordValid = invalid;
 		req.passwordRepeatValid = invalid;
@@ -120,6 +122,7 @@ function validate(req, res, next) {
 	}
 	req.captchaValid = (req.session.captcha.toLowerCase() == req.body.captcha.toLowerCase()) ? valid : invalid;
 
+	//Thank you short circuit evaluation.
 	req.body.isValid = req.firstNameValid == valid &&
 		req.lastNameValid == valid &&
 		req.addressValid == valid &&
@@ -132,7 +135,6 @@ function validate(req, res, next) {
 		req.termsValid == valid &&
 		req.captchaValid == valid;
 
-	console.log(req.body.isValid);
 	next();
 }
 
@@ -171,7 +173,6 @@ express()
 			color: true
 		});
 		req.session.captcha = captcha.text;
-		console.log(captcha.text)
 		res.render('pages/index', {
 			data: captcha.data,
 			//First Name
@@ -237,9 +238,6 @@ express()
 				color: true
 			});
 			req.session.captcha = captcha.text;
-			console.log(captcha.text)
-
-
 
 			//These fields must be filled in every time regardless of success on previous submission
 			if (req.passwordValid == "is-valid") {
